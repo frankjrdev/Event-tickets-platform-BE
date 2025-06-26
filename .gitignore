@@ -1,0 +1,13 @@
+target/
+*.iml
+.idea/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.DS_Store
+.mvn/wrapper/maven-wrapper.jar
