@@ -7,20 +7,37 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/userdb
+    url: jdbc:postgresql://localhost:5432/usersdb
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
 
 jwt:
   secret: "my-ultra-secure-and-very-long-secret-key-for-jwt-1234567890"
   expiration: 86400000 # 24 horas en milisegundos
 
 springdoc:
+  api-docs:
+    path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
+    operationsSorter: method
+    tagsSorter: alpha
+    doc-expansion: none
+    use-root-path: true
+  webjars:
+    prefix: /webjars

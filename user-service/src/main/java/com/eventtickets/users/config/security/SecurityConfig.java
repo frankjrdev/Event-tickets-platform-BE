@@ -2,6 +2,7 @@ package com.eventtickets.users.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,13 +19,12 @@ import com.eventtickets.users.config.jwt.JwtService;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-
 public class SecurityConfig {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
-    public SecurityConfig(JwtService jwtService, UserDetailsService userDetailsService) {
+    public SecurityConfig(JwtService jwtService, @Lazy UserDetailsService userDetailsService) {
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
     }
